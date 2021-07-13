@@ -1,18 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:shop_app/core/failure/failures.dart';
 import 'package:shop_app/data/data_source/data_source.dart';
-import 'package:shop_app/data/data_source/product_local_data_source.dart';
 import 'package:shop_app/data/models/product_model.dart';
-import '../../mock/mock_products_database.dart';
+
+class MockFireBaseDataSource extends Mock implements IProductDataSource {}
 
 void main() {
   late IProductDataSource datasource;
-  late String dataBase;
 
   setUp(() {
-    dataBase = MOCKDBPRODUTOS;
-    datasource = ProductLocalDataSource(dataBase: dataBase);
+    datasource = MockFireBaseDataSource();
   });
 
   test('should return a product with the same ProductId', () async {
@@ -25,6 +24,8 @@ void main() {
       price: 299.50,
     );
 
+    when(() => datasource.getProductById(productId)).thenAnswer((_) async => Right(testProduct));
+
     final product = await datasource.getProductById(productId);
 
     expect(Right(testProduct), product);
@@ -32,6 +33,8 @@ void main() {
 
   test('should return a failure "productNotFound" when sending an id that doesn\'t exist', () async {
     final int productId = -1;
+
+    when(() => datasource.getProductById(productId)).thenAnswer((_) async => Left(ProductNotFound()));
 
     final product = await datasource.getProductById(productId);
 

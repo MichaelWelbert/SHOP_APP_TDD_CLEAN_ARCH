@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "136199971599",
+    "project_id": "mieleve-d97b3",
+    "storage_bucket": "mieleve-d97b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136199971599:android:a95dbc8baad887e379547a",
+        "android_client_info": {
+          "package_name": "com.example.shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136199971599-knqht3cjj7pusovb77fcfb1bhhl1cslr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc9Lcq4PwOjNxM9OUT7qnh7nSpgVvGTGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136199971599-knqht3cjj7pusovb77fcfb1bhhl1cslr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
