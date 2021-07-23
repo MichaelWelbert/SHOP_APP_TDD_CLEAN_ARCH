@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shop_app/core/failure/failures.dart';
-import 'package:shop_app/data/data_source/data_source.dart';
+import 'package:shop_app/data/repositories/data_source.dart';
 import 'package:shop_app/data/models/product_model.dart';
 import 'package:shop_app/data/repositories/product_repository.dart';
 import 'package:shop_app/domain/repositories/product_repository_interface.dart';

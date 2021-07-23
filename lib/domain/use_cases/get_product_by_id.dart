@@ -8,7 +8,7 @@ class GetProductById {
   GetProductById({required this.repository});
   Future<Either<Failure, ProductEntity>> call({required int productId}) async {
     try {
-      if (outRangeProductId(productId)) return Left(OutRangeValue());
+      if (_outRangeProductId(productId)) return Left(OutRangeValue());
 
       return await repository.getProductId(productId: productId);
     } catch (error) {
@@ -16,7 +16,7 @@ class GetProductById {
     }
   }
 
-  bool outRangeProductId(int productId) {
+  bool _outRangeProductId(int productId) {
     int outRangedId = 0;
     if (productId <= outRangedId)
       return true;

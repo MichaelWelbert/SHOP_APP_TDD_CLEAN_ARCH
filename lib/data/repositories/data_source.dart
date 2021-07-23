@@ -4,4 +4,5 @@ import 'package:shop_app/data/models/product_model.dart';
 
 abstract class IProductDataSource {
   Future<Either<Failure, ProductModel>> getProductById(int productId);
+  Future<Either<Failure, List<ProductModel>>> getAllProducts();
 }

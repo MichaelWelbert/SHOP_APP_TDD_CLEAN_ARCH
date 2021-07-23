@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shop_app/core/failure/failures.dart';
-import 'package:shop_app/data/data_source/data_source.dart';
+import 'package:shop_app/data/repositories/data_source.dart';
 import 'package:shop_app/data/models/product_model.dart';
 import 'package:shop_app/data/repositories/product_repository.dart';
 import 'package:shop_app/domain/repositories/product_repository_interface.dart';
@@ -41,5 +41,18 @@ void main() {
     final productFould = await repository.getProductId(productId: productId);
 
     expect(productFould, Left(ProductNotFound()));
+  });
+
+  test("Should return all products", () async {
+    List<ProductModel> productsTest = [
+      ProductModel(id: 1, name: "tenis", description: "adidas style", urlImage: "adidas.jpg", price: 200),
+      ProductModel(id: 2, name: "p8 plus", description: "smartwatch top", urlImage: "p8plus.jpg", price: 250),
+    ];
+
+    when(() => dataSource.getAllProducts()).thenAnswer((_) async => Right(productsTest));
+
+    final productsFound = await repository.getAllProducts();
+
+    expect(productsFound, Right(productsTest));
   });
 }
